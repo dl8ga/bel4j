@@ -650,3 +650,353 @@ body::-webkit-scrollbar-thumb:hover {
   margin: 0 15px;
   border-radius: 4px;
 }
+/* Database Button - кнопка с текущей БД на панели поиска */
+.db-menu-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background-color: var(--input-background);
+  color: var(--primary-color);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  white-space: nowrap;
+  user-select: none;
+  align-self: flex-start;
+  margin-top: 0.125rem;
+  transition: all 0.2s ease;
+  height: fit-content;
+}
+
+.db-menu-toggle:hover {
+  background-color: var(--hover-color);
+  border-color: var(--primary-color);
+}
+
+.db-icon {
+  font-size: 1rem;
+}
+
+.db-text {
+  max-width: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Database Sidebar - стили для сайдбара баз данных */
+.db-sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  backdrop-filter: blur(2px);
+}
+
+.db-sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 320px;
+  background-color: var(--panel-background);
+  border-right: 1px solid var(--border-color);
+  z-index: 1001;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.db-sidebar.open {
+  transform: translateX(0);
+}
+
+.db-sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem;
+  border-bottom: 1px solid var(--border-color);
+  background-color: var(--panel-background-fade);
+}
+
+.db-sidebar-header h3 {
+  margin: 0;
+  color: var(--primary-color);
+  font-size: 1.125rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.db-sidebar-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1.25rem;
+}
+
+.db-sidebar-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.db-sidebar-content::-webkit-scrollbar-thumb {
+  background-color: var(--border-color);
+  border-radius: 3px;
+}
+
+.db-sidebar-content::-webkit-scrollbar-thumb:hover {
+  background-color: var(--hover-color);
+}
+
+/* Current DB indicator in sidebar */
+.current-db {
+  margin-bottom: 1.25rem;
+  padding: 1rem;
+  background-color: var(--panel-background-fade);
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+}
+
+.current-db label {
+  display: block;
+  color: var(--primary-color-fade);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+}
+
+.current-db-name {
+  color: var(--primary-color);
+  font-size: 1.125rem;
+  font-weight: 600;
+  word-break: break-all;
+}
+
+/* Create DB button */
+.create-db-btn {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: transparent;
+  border: 2px dashed var(--border-color);
+  color: var(--primary-color);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  transition: all 0.2s;
+  margin-bottom: 1rem;
+}
+
+.create-db-btn:hover {
+  border-color: var(--primary-color);
+  background-color: var(--hover-color);
+}
+
+/* Create form */
+.create-db-form {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.create-db-form input {
+  flex: 1;
+  padding: 0.5rem 0.75rem;
+  background-color: var(--input-background);
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  border-radius: 4px;
+  font-size: 0.875rem;
+  outline: none;
+}
+
+.create-db-form input:focus {
+  border-color: var(--primary-color);
+}
+
+.create-db-form button {
+  padding: 0.5rem 0.75rem;
+  background-color: var(--primary-color);
+  color: var(--background-color);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.create-db-form button:hover {
+  background-color: var(--primary-color-fade);
+}
+
+/* DB List */
+.db-list {
+  margin-bottom: 1rem;
+}
+
+.db-list label {
+  display: block;
+  color: var(--primary-color-fade);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.75rem;
+}
+
+.db-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem;
+  margin-bottom: 0.5rem;
+  background-color: var(--panel-background-fade);
+  border-radius: 4px;
+  border: 1px solid transparent;
+  transition: all 0.2s;
+}
+
+.db-item:hover {
+  border-color: var(--border-color);
+  background-color: var(--hover-color);
+}
+
+.db-item.active {
+  border-color: var(--primary-color);
+  background-color: rgba(169, 150, 127, 0.1);
+}
+
+.db-item-info {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex: 1;
+  cursor: pointer;
+}
+
+.db-status-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--border-color);
+}
+
+.db-item.active .db-status-indicator {
+  background-color: var(--success-color);
+  box-shadow: 0 0 6px var(--success-color);
+}
+
+.db-name {
+  color: var(--text-color);
+  font-size: 0.875rem;
+  flex: 1;
+}
+
+.db-badge {
+  background-color: var(--primary-color);
+  color: var(--background-color);
+  padding: 0.125rem 0.5rem;
+  border-radius: 12px;
+  font-size: 0.625rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.db-delete-btn {
+  background: none;
+  border: none;
+  color: var(--border-color);
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: 4px;
+  opacity: 0;
+  transition: all 0.2s;
+}
+
+.db-item:hover .db-delete-btn {
+  opacity: 1;
+}
+
+.db-delete-btn:hover {
+  color: var(--error-color);
+  background-color: rgba(244, 67, 54, 0.1);
+}
+
+/* Refresh button */
+.refresh-btn {
+  width: 100%;
+  padding: 0.5rem;
+  background-color: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--primary-color-fade);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  transition: all 0.2s;
+}
+
+.refresh-btn:hover:not(:disabled) {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+}
+
+.refresh-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Error in sidebar */
+.db-error {
+  background-color: rgba(244, 67, 54, 0.1);
+  border: 1px solid rgba(244, 67, 54, 0.3);
+  color: var(--error-color);
+  padding: 0.75rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.875rem;
+}
+
+.db-error button {
+  background: none;
+  border: none;
+  color: var(--error-color);
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+/* Loading/Empty states */
+.db-loading, .db-empty {
+  color: var(--primary-color-fade);
+  text-align: center;
+  padding: 1.5rem;
+  font-size: 0.875rem;
+}
+/* Close button (X) в заголовке сайдбара */
+.close-btn {
+  background: none;
+  border: none;
+  color: var(--primary-color-fade);
+  font-size: 1.5rem;
+  cursor: pointer;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: all 0.2s;
+  line-height: 1;
+  padding: 0;
+}
+
+.close-btn:hover {
+  color: var(--text-color);
+  background-color: var(--hover-color);
+}

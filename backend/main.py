@@ -3,14 +3,16 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import sys
 from pathlib import Path
-
+from bel4j.manager import Manager
 sys.path.insert(0, str(Path(__file__).parent))
 
 from bel4j.manager import Manager
 from bel4j.executor import execute
 from bel4j.core import Node, Relationship
 
+
 app = FastAPI(title="Bel4j API")
+manager_api = Manager()
 
 app.add_middleware(
     CORSMiddleware,
@@ -47,6 +49,11 @@ def serialize_rel(rel: Relationship) -> dict:
         **rel.props
     }
 
+@app.get("/api/databases")
+def list_databases():
+    """Возвращает список бд"""
+    databases = manager_api.list_dbs()
+    return {"databases" : databases}
 
 @app.post("/api/query")
 def query(request: QueryRequest):

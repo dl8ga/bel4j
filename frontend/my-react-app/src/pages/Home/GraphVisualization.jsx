@@ -6,7 +6,6 @@ const GraphVisualization = ({ data, onNodeSelect, onEdgeSelect }) => {
   const networkRef = useRef(null);
 
   const processGraphData = useCallback((rawData) => {
-    // Защита от null/undefined
     if (!rawData || typeof rawData !== 'object') {
       console.error('Invalid rawData:', rawData);
       return { nodes: [], edges: [] };
